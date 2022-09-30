@@ -14,6 +14,7 @@ namespace DataEditLib.Data
         {
             try
             {
+
                 var objs = await InsertCurrentData(message);
                 await File.WriteAllLinesAsync(ProjectProperties.TextFilePath, objs);
                 return new ActionResult<T>(message, MessageStatus.Ok, ProjectProperties.OkCreatedInfo);
