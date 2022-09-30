@@ -1,6 +1,8 @@
-﻿using DataEditLib.Enums;
+﻿using DataEditLib.Data;
+using DataEditLib.Enums;
 using DataEditLib.Interfaces;
 using System.Diagnostics;
+using System.Net;
 using System.Net.Sockets;
 using System.Text.Json.Serialization;
 
@@ -22,8 +24,8 @@ namespace DataEditLib.Models.MessagesTypes
         public ServerMessage(Message oldMessage) : base()
         {
             Value = oldMessage.Value;
-            IpAddress = oldMessage.IpAddress;
-            Port = oldMessage.Port;
+            IpAddress = ProjectProperties.TcpClientServerIp;
+            Port = ProjectProperties.TcpClientServerPort;
             SenderType = SenderType.Server;
         }
 
