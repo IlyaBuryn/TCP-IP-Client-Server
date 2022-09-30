@@ -1,0 +1,11 @@
+CreateDatabase|
+Create|1,Ilya,60,5.2,2000;2,Isaac,99.23,7.9,3000;
+ReadAll|
+Create|3,Stepan,70,6.41,2845.19;
+ReadAll|
+ReadOne|3
+Update|3,Aleksander,945,6.01,3957.59;
+ReadAll|
+Delete|1
+ReadAll|
+DeleteDatabase|
