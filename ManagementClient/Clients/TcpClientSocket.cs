@@ -44,6 +44,9 @@ namespace ManagementClient.Clients
                 _client = new TcpClient();
                 _client.Connect(_ip, _port);
 
+                _messageToSend.IpAddress = ((IPEndPoint)_client.Client.RemoteEndPoint).Address.ToString();
+                _messageToSend.Port = ((IPEndPoint)_client.Client.RemoteEndPoint).Port;
+
                 HandleCommunication();
                 //Thread t = new Thread(new ThreadStart(HandleCommunication));
                 //t.Start();
@@ -63,10 +66,6 @@ namespace ManagementClient.Clients
                 _sReader = new StreamReader(_client.GetStream(), Encoding.ASCII);
                 Task.Delay(10);
                 _sWriter = new StreamWriter(_client.GetStream(), Encoding.ASCII);
-
-
-                // Preparing to send message at server
-                PrepareToSend();
 
 
                 // Sending message as CVS string and getting info about request; cloasing stream
@@ -97,14 +96,6 @@ namespace ManagementClient.Clients
             _messageToSend = null;
         }
 
-        private void PrepareToSend()
-        {
-            if (_messageToSend != null)
-            {
-                _messageToSend.Port = _port;
-                _messageToSend.IpAddress = GetLocalIPAddress();
-            }
-        }
 
         // Send message method
         public void SendMessage(ClientMessage message)
@@ -112,19 +103,6 @@ namespace ManagementClient.Clients
             _messageToSend = message;
             _messageToSend.SenderType = DataEditLib.Enums.SenderType.Client;
             StartConnection();
-        }
-
-        private string GetLocalIPAddress()
-        {
-            var host = Dns.GetHostEntry(Dns.GetHostName());
-            foreach (var ip in host.AddressList)
-            {
-                if (ip.AddressFamily == AddressFamily.InterNetwork)
-                {
-                    return ip.ToString();
-                }
-            }
-            throw new Exception("No network adapters with an IPv4 address in the system!");
         }
     }
 }
