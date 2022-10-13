@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataEditLib", "DataEditLib\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestData", "TestData", "{7DAD728A-241C-4CBB-BC95-91078720FBFC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client_Test", "Client_Test\Client_Test.csproj", "{1DB367B9-167D-4273-9A7B-36EFB58AB045}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Client_Test", "Client_Test\Client_Test.csproj", "{1DB367B9-167D-4273-9A7B-36EFB58AB045}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

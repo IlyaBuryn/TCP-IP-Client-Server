@@ -3,7 +3,7 @@
     public static class ProjectProperties
     {
         public const int TcpClientServerPort = 59267;
-        public const string TcpClientServerIp = "192.168.1.6";
+        public const string TcpClientServerIp = "192.168.1.8";
 
         public const string TextFilePath = "../../../../TestData/Data.txt";
         public const string SqliteFilePath = "../../../../TestData/SqliteData.db";

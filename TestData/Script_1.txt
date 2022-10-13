@@ -8,4 +8,3 @@ Update|3,Aleksander,945,6.01,3957.59;
 ReadAll|
 Delete|1
 ReadAll|
-DeleteDatabase|
