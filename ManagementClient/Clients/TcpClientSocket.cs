@@ -44,7 +44,7 @@ namespace ManagementClient.Clients
                 _client = new TcpClient();
                 _client.Connect(_ip, _port);
 
-                _messageToSend.IpAddress = ((IPEndPoint)_client.Client.RemoteEndPoint).Address.ToString();
+                _messageToSend.IpAddress = GetLocalIPAddress();
                 _messageToSend.Port = ((IPEndPoint)_client.Client.RemoteEndPoint).Port;
 
                 HandleCommunication();
@@ -103,6 +103,19 @@ namespace ManagementClient.Clients
             _messageToSend = message;
             _messageToSend.SenderType = DataEditLib.Enums.SenderType.Client;
             StartConnection();
+        }
+
+        private string GetLocalIPAddress()
+        {
+            var host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (var ip in host.AddressList)
+            {
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    return ip.ToString();
+                }
+            }
+            throw new Exception("No network adapters with an IPv4 address in the system!");
         }
     }
 }
